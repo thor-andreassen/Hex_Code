@@ -1,4 +1,4 @@
-function [face_outer_surf,face_list,nodes_surf,nodes_outer_surf_coords]=get3DElementOuterSurface(elems,nodes)
+function [face_outer_surf,face_list,nodes_surf,nodes_outer_surf_coords,inner_nodes,nodes_inner_coords]=get3DElementOuterSurface(elems,nodes)
         %% Determine the outer surface, and nodes for a given 3D mesh
         % the function takes in a list of 3D elements, and nodes, and
         % calculates the list of faces on the outer mesh,as well as all
@@ -37,10 +37,16 @@ function [face_outer_surf,face_list,nodes_surf,nodes_outer_surf_coords]=get3DEle
         nodes_surf=reshape(face_outer_surf,[],1);
         nodes_surf=unique(nodes_surf);
         
+        
         % the following lines will determine the node locations of any
         % elements on the surfce if desired and the node locations are
         % given
         if nargin>1 && nargout>3
                 nodes_outer_surf_coords=nodes(nodes_surf,:);
+        end
+        
+        if nargin>1 && nargout>4
+                inner_nodes=setdiff(reshape(face_list,[],1),nodes_surf);
+                nodes_inner_coords=nodes(inner_nodes,:);
         end
 end
