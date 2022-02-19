@@ -36,8 +36,10 @@ end
 plot3(query_nodes(:,2),query_nodes(:,3),query_nodes(:,4),'go');
 
 %% reduce patch
+quadtic=tic;
 [reduce_face,reduce_nodes]=reducepatch(face_outer_surf,nodes,0.1);
 [Q4_faces, Q4_nodes]=convertTriToQ4Mesh(reduce_face,reduce_nodes);
+toc(quadtic)
 figure()
 patch('Faces',face_outer_surf,'Vertices',nodes,'FaceColor','b','FaceAlpha',0.75);
 patch('Faces',Q4_faces,'Vertices',Q4_nodes,'FaceColor','r','FaceAlpha',0.75);
