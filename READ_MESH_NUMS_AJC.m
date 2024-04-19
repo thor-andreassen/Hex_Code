@@ -53,6 +53,9 @@ for i=enode:length(alldata{1})
         elseif isempty(strfind(cell2mat(alldata{1}(selem-1)),'R3D4'))==0
             disp('R3D4 Quad mesh identified')
             meshtype=5;
+        elseif isempty(strfind(cell2mat(alldata{1}(selem-1)),'C3D6'))==0
+            disp('C3D6 Wedge mesh identified')
+            meshtype=7;
         else
             return
         end
