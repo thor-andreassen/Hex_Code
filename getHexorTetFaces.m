@@ -4,11 +4,13 @@ function face_list=getHexorTetFaces(elems)
         if size(elems,2)<=4
                 face_order=[3,2,1;2,3,4;3,1,4;1,2,4];
                 node_per_face=3;
+                num_faces=4;
         else
                 face_order=[4,3,2,1;5,6,7,8;1,2,6,5;2,3,7,6;3,4,8,7;4,1,5,8];
                 node_per_face=4;
+                num_faces=6;
         end
-        face_list=zeros(size(elems,1)*6,node_per_face);
+        face_list=zeros(size(elems,1)*num_faces,node_per_face);
         counter=1;
         for count_elems=1:size(elems,1)
                 for count_face=1:size(face_order,1)
