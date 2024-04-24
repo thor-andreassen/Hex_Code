@@ -2,11 +2,11 @@ function face_list=getHexorTetFaces(elems)
 % this function calulates all of the faces for a set of Hexahedral or
 % Tetrahedral elements.
         if size(elems,2)<=4
-                face_order=[3,2,1;2,3,4;3,1,4;1,2,4];
+                face_order=[1,2,3;1,4,2;2,4,3;3,4,1];
                 node_per_face=3;
                 num_faces=4;
         else
-                face_order=[4,3,2,1;5,6,7,8;1,2,6,5;2,3,7,6;3,4,8,7;4,1,5,8];
+                face_order=[1,2,3,4;5,8,7,6;1,5,6,2;2,6,7,3;3,7,8,4;4,8,5,1];
                 node_per_face=4;
                 num_faces=6;
         end
